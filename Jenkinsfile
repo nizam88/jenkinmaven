@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                sh 'mvn clean package -DskipTests=true'
+                sh 'maven3 clean package -DskipTests=true'
             }
         }
         stage('Unit Tests') {
             steps {
-                sh 'mvn surefire:test'
+                sh 'maven3 surefire:test'
             }
         }
          stage('Integration Tests') {
             steps {
-                sh 'mvn failsafe:integration-test'
+                sh 'maven3 failsafe:integration-test'
             }
         }
     }
