@@ -1,15 +1,59 @@
-# simple-java-maven-app
 
-This repository is for the
-[Build a Java app with Maven](https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/)
-tutorial in the [Jenkins User Documentation](https://jenkins.io/doc/).
 
-The repository contains a simple Java application which outputs the string
-"Hello world!" and is accompanied by a couple of unit tests to check that the
-main application works as expected. The results of these tests are saved to a
-JUnit XML report.
+Java application testing examples
+=========================
 
-The `jenkins` directory contains an example of the `Jenkinsfile` (i.e. Pipeline)
-you'll be creating yourself during the tutorial and the `scripts` subdirectory
-contains a shell script with commands that are executed when Jenkins processes
-the "Deliver" stage of your Pipeline.
+### BUILD  
+
+mvn clean package
+
+### RUN
+
+You can launch the Java server within your IDE, by running the Application class at the root of your application's Java package.
+As it is a simple "Main" class, it is the easiest and quickest way to run and debug the application.
+If you prefer to use Maven, you can also run your application by typing:
+
+`mvn spring-boot:run`
+
+The application will be available on `http://localhost:8080`
+
+
+### TESTS examples
+
+Application is tested using different kids of test:
+
+* Unit
+
+[src/test/java/com/pik/contact/unit/ContactTest.java](src/test/java/com/pik/contact/unit/ContactTest.java)
+
+* Unit with mocks
+
+[src/test/java/com/pik/contact/service/unit/ContactServiceTest.java](src/test/java/com/pik/contact/service/unit/ContactServiceTest.java)
+
+* Integration test
+
+[src/test/java/com/pik/contact/service/integration/ContactServiceTest.java](src/test/java/com/pik/contact/service/integration/ContactServiceTest.java)
+
+* Spring mvc test for REST endpoint
+
+[src/test/java/com/pik/contact/api/ContactControllerTest.java](src/test/java/com/pik/contact/api/ContactControllerTest.java)
+
+* Cucumber acceptance test
+
+[src/test/java/com/pik/contact/cucumber/RunCukesTest.java](src/test/java/com/pik/contact/cucumber/RunCukesTest.java)
+[src/test/resources/com/pik/contact/cucumber/contacts.feature](src/test/resources/com/pik/contact/cucumber/contacts.feature)
+
+* GUI test with Selenium (with Page Object pattern)
+
+[src/test/java/com/pik/contact/gui/selenium/test/ContactsTest.java](src/test/java/com/pik/contact/gui/selenium/test/ContactsTest.java)
+
+alternative is to use Geb testing framework (https://github.com/geb/geb)
+
+* PIT mutation tests (http://pitest.org/)
+
+PIT is configured in maven [src/pom/xml](src/pom/xml)and can be run with: `mvn pitest:mutationCoverage`
+
+* Code coverage report by Jacoco
+
+
+
